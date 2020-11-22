@@ -124,3 +124,5 @@ On initial run docker will need to download a docker image to the local docker i
 See drun.sh for optionally changing the output location defined at "data_local".
 
 ### Windows 10
+
+TODO: dbrun.cmd
