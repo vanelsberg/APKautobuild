@@ -113,9 +113,10 @@ Once your configuration is setup you can build AndroidAPS.
 
 ### Linux/WSL
 
-Start your build running the following command script:
+Start your build running the following commands:
 
-    ./dbrun.sh
+    chmod u+x build_AAPS.cmd
+    ./build_AAPS.cmd
 
 On initial run docker will need to download a docker image to the local docker image repository. The image is sized at about 1GB so, depending on your internet connection this may take some time. Once the image is loaded succesive runs will start without downloading.
 
@@ -125,4 +126,16 @@ See drun.sh for optionally changing the output location defined at "data_local".
 
 ### Windows 10
 
-TODO: dbrun.cmd
+To build on Windows run the command batch file:
+
+    build_AAPS.cmd
+
+**Additional remark:**
+
+When editing the _source.environment_ configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
+You can check by openeing the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
+
+
+### MacOS
+
+TODO: Untested!?
