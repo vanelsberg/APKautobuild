@@ -5,7 +5,6 @@ export GIT_REPO="https://github.com/AAPS-Omnipod/AndroidAPS.git"
 # Branch
 #export GIT_BRANCH="omnipod_eros"
 export GIT_BRANCH="omnipod_eros_dev"
-#export GIT_BRANCH="omnipod_eros_dev_prevent_0x31"
 
 # Commit
 export GIT_COMMIT=""
