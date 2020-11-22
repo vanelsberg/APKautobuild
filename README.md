@@ -111,14 +111,16 @@ Configuration is in the file source.environment:
 
 Once your configuration is setup you can build AndroidAPS.
 
+On initial run docker will need to download a docker image to the local docker image repository. The image is sized at about 1GB so, depending on your internet connection, this may take some time. Once the image is loaded succesive runs will start without downloading.
+
 ### Linux/WSL
 
-Start your build running the following commands:
+To build on Linux run the following commands:
 
-    chmod u+x build_AAPS.cmd
-    ./build_AAPS.cmd
+    chmod u+x build_AAPS.sh     # Make the script executable
 
-On initial run docker will need to download a docker image to the local docker image repository. The image is sized at about 1GB so, depending on your internet connection this may take some time. Once the image is loaded succesive runs will start without downloading.
+    ./build_AAPS.sh             # Run the script
+
 
 **You will find the build output in the location __data__/output**
 
@@ -130,10 +132,10 @@ To build on Windows run the command batch file:
 
     build_AAPS.cmd
 
-**Additional remark:**
+* Additional remark:
 
-When editing the _source.environment_ configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
-You can check by openeing the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
+    When editing the _source.environment_ configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
+    You can check by openeing the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
 
 
 ### MacOS
