@@ -1,0 +1,17 @@
+# Git config
+export GIT_PROJECT="AndroidAPS"
+export GIT_REPO="https://github.com/AAPS-Omnipod/AndroidAPS.git"
+
+# Branch
+#export GIT_BRANCH="omnipod_eros"
+export GIT_BRANCH="omnipod_eros_dev"
+#export GIT_BRANCH="omnipod_eros_dev_prevent_0x31"
+
+# Commit
+export GIT_COMMIT=""
+
+# Signing keyfile, alias and password file
+export KEY_FILE="appkeyAndroidAPS-keystore.jks"
+export KEY_ALIAS="appkeyAndroidAPS"
+export KEY_PASSW_FILE="ks-password"
+
