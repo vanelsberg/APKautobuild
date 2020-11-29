@@ -1,2 +1,4 @@
 data/keystore/ks-password
 data/keystore/appkeyAndroidAPS-keystore.jks
+data/output/*.apk
+data/output/*.json
