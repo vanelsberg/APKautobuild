@@ -11,4 +11,4 @@ set image=devtest01.azurecr.io/aapsbuilder:0.1.1
 
 
 rem Run container in interactive mode
-docker run --rm -v "%data_local%:%data_mount%" -it %imaeg% %1
+docker run --rm -v "%data_local%:%data_mount%" -it %image% %1
