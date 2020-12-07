@@ -1,5 +1,5 @@
 # Force the following filetypes to have unix eols, so Windows does not break them
-source.* text eol=lf
+*.config text eol=lf
 
 ## These files are binary and should be left untouched
 # (binary is a macro for -text -diff)
