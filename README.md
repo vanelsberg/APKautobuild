@@ -38,13 +38,13 @@ Docker Desktop for Windows is the Community version of Docker for Microsoft Wind
 To build from Linux you need to:
 
     * Setup your keystore at data/**keystore**
-    * Edit the configuration file data/**source.environment**
+    * Edit the configuration file data/**aapsbuilder.config**
 
 ## Data directory:
 On startup the docker countainer mounts a data directory for storing configuration data and build results:
 
     * data/keystore:
-        Must contain theh folwing files:
+        Must contain theh folowing files:
             appkeyAndroidAPS-keystore.jks
             ks-password
     * data/output:
@@ -52,11 +52,20 @@ On startup the docker countainer mounts a data directory for storing configurati
             appkeyAndroidAPS-keystore.jks   -> personal keystore
             ks-password                     -> password file
 
-The documentation uses the above defaults for keystore and password filenames. Optionally change the default keystore and password files throug ediiting the configuration file _source.environment_. 
+The documentation uses the above defaults for keystore and password filenames. Optionally change the default keystore and password files throug ediiting the configuration file. 
 
-Configuration is in the file source.environment:
+Configuration is in the file _aapsbuilder.config_:
 
 ## Signing Keystore:
+
+* data/**keystore/ks-password**
+
+    To sign .APK's after building you need to configuare the keystore- and key password for your keystore file:
+
+    Create a plaintext password file named _ks-password_ containing 2 lines (see ks-password.sample):
+    * line1: keystore password
+    * line2: key password
+
 
 * data/**keystore/appkeyAndroidAPS-keystore.jks**
 
@@ -65,23 +74,13 @@ Configuration is in the file source.environment:
     _Remark:_
 
     You can use a keystore generated from [Android Studio](https://androidaps.readthedocs.io/en/latest/EN/Installing-AndroidAPS/Building-APK.html#generate-signed-apk)
+    or generate a new keystore file using the Docker autobuilder. Make sure to define your password in the ks-password file, then run:
 
-    Alternatively generat a new keystore using the [SDK commandline](https://developer.android.com/studio/build/building-cmdline) keytool:
+        ./generate-keystore.sh
 
-        keytool -genkey -v \
-        -keystore appkeyAndroidAPS-keystore.jks \
-        -keyalg RSA \
-        -keysize 2048 \
-        -validity 10000 
-        -alias "appkeyAndroidAPS"
+    The above prompts you for "Distinguished Name" fields for your key. It then generates a new keystore file. The key generated is valid for 10,000 days.
 
-    The example above prompts you for passwords for the keystore and key, and for the "Distinguished Name" fields for your key. It then generates the keystore as a file called appkeyAndroidAPS-keystore.jks, saving it in the current directory (move it to the data/keystore directory). The key generated is valid for 10,000 days.
-
-* data/**keystore/ks-password**
-
-    Create a plaintext password file named _ks-password_ containing 2 lines (see ks-password.sample):
-    * line1: keystore password
-    * line2: key password
+    _Note that you can only update AndroidAPS with a new version that was signed with the same key. When generating a new keystore make sure you uninstall AndroidAPS first before installing the new version build bij autobuild!_
 
 ## Configuration:
 
@@ -113,7 +112,7 @@ Once your configuration is setup you can build AndroidAPS.
 
 On initial run docker will need to download a docker image to the local docker image repository. The image is sized at about 1GB so, depending on your internet connection, this may take some time. Once the image is loaded succesive runs will start without downloading.
 
-### Linux/WSL
+## Linux/WSL
 
 To build on Linux run the following commands:
 
@@ -124,20 +123,19 @@ To build on Linux run the following commands:
 
 **You will find the build output in the location __data__/output**
 
-See drun.sh for optionally changing the output location defined at "data_local".
-
-### Windows 10
+## Windows 10
 
 To build on Windows run the command batch file:
 
     build_AAPS.cmd
 
-* Additional remark:
+* **Important**:
 
-    When editing the _source.environment_ configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
+    When editing the _aapsbuilder.config configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
     You can check by openeing the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
 
+**You will find the build output in the location __data__/output**
 
-### MacOS
+## MacOS
 
 TODO: Untested!?
