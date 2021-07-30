@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Mounting local data on container
+data_mount=/data
+data_local=$(pwd)/data
+image=theod00r/aapsbuilder:0.1.1
