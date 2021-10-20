@@ -2,11 +2,11 @@
     
     **Use at you own risk. Resulting .APK files are not fully tested!**
 
-# Android Studio autobuild
+# Android Studio APK autobuild
 
-Docker automatic builder for AndroidAPS
+Docker automatic builder for Android APK's
 
-With AAPS autobuild you can build .APK installer files on any system supporting Docker. No need to install Android Studio or SDK's. Docker is supported for multiple platforms:
+With APKautobuild you can build .APK installer files on any system supporting Docker. No need to install Android Studio or SDK's. Docker is supported for multiple platforms:
 
     * Linux
     * Windows
@@ -14,7 +14,7 @@ With AAPS autobuild you can build .APK installer files on any system supporting 
 
 # Preparations
 
-To build AndroidAPS using Docker you need:
+To build an Android APK using Docker you need:
 
     * Install docker
     * Setup your keystore at data/**keystore**
@@ -45,11 +45,11 @@ On startup the docker countainer mounts a data directory for storing configurati
 
     * data/keystore:
         Must contain theh folowing files:
-            appkeyAndroidAPS-keystore.jks
+            appkeyAndroidAPK-keystore.jks
             ks-password
     * data/output:
         Must contain the following files:
-            appkeyAndroidAPS-keystore.jks   -> personal keystore
+            appkeyAndroidAPK-keystore.jks   -> personal keystore
             ks-password                     -> password file
 
 The documentation uses the above defaults for keystore and password filenames. Optionally change the default keystore and password files throug ediiting the configuration file. 
@@ -67,9 +67,9 @@ Configuration is in the file _aapsbuilder.config_:
     * line2: key password
 
 
-* data/**keystore/appkeyAndroidAPS-keystore.jks**
+* data/**keystore/appkeyAndroidAPK-keystore.jks**
 
-    To sign your .APK installer files you need to copy your Android keystore file named _appkeyAndroidAPS-keystore.jks_ to the location /data/keystore. 
+    To sign your .APK installer files you need to copy your Android keystore file named _appkeyAndroidAPK-keystore.jks_ to the location /data/keystore. 
 
     _Remark:_
 
@@ -80,7 +80,7 @@ Configuration is in the file _aapsbuilder.config_:
 
     The above prompts you for "Distinguished Name" fields for your key. It then generates a new keystore file. The key generated is valid for 10,000 days.
 
-    _Note that you can only update AndroidAPS with a new version that was signed with the same key. When generating a new keystore make sure you uninstall AndroidAPS first before installing the new version build bij autobuild!_
+    _Note that you can only update an APK with a new version that was signed with the same key. When generating a new keystore make sure you uninstall the APK first before installing the new version build bij autobuild!_
 
 ## Configuration:
 
@@ -106,9 +106,9 @@ Configuration is in the file _aapsbuilder.config_:
     * The script file _dbrun.sh_ defines a variable named **data_local**.
     It defaults to the directory **data** in the root directory of this project but you may change this to any directory location on your local machine.
 
-## Building AndroidAPS .apk files
+## Building AndroidS .APK files
 
-Once your configuration is setup you can build AndroidAPS.
+Once your configuration is setup you can build your APK.
 
 On initial run docker will need to download a docker image to the local docker image repository. The image is sized at about 1GB so, depending on your internet connection, this may take some time. Once the image is loaded succesive runs will start without downloading.
 
