@@ -34,7 +34,7 @@ Docker Desktop for Windows is the Community version of Docker for Microsoft Wind
 To build from Linux you need to:
 
     * Setup your keystore at data/**keystore**
-    * Edit the configuration file data/**aapsbuilder.config**
+    * Edit the configuration file data/**asbuilder.config**
 
 ## Data directory:
 On startup the docker countainer mounts a data directory for storing configuration data and build results:
@@ -102,7 +102,7 @@ Configuration is in the file _aapsbuilder.config_:
     * The script file _dbrun.sh_ defines a variable named **data_local**.
     It defaults to the directory **data** in the root directory of this project but you may change this to any directory location on your local machine.
 
-## Building AndroidS .APK files
+## Building Android .APK files
 
 Once your configuration is setup you can build your APK.
 
