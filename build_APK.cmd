@@ -9,7 +9,7 @@ set data_mount=/data
 set data_local=%~dp0%data
 
 rem Docker image (public access)
-set image=theod00r/aapsbuilder:0.1.1
+set image=theod00r/apkbuilder:1.0.0
 
 rem Run container in interactive mode
 docker run --rm -v "%data_local%:%data_mount%" -it %image% %1
