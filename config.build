@@ -1,6 +1,8 @@
 #!/bin/bash
 
+# docker_runparam="--maxmemory=4g"
+
 # Mounting local data on container
 data_mount=/data
 data_local=$(pwd)/data
-image=theod00r/aapsbuilder:0.1.1
+image=theod00r/apkbuilder:0.1.2

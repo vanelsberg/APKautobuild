@@ -2,4 +2,4 @@
 
 # Generating new keystore
 
-./build_AAPS.sh ./generate-key.sh
+./build_APK.sh ./generate-key.sh

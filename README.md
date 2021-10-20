@@ -1,17 +1,10 @@
 # **WARNING**: EXPERIMENTAL
     
-    **Use at you own risk. Resulting .apk files are not fully tested!**
+    **Use at you own risk. Resulting .APK files are not fully tested!**
 
-Important note
-1. We advise not to use it on human beings: https://github.com/AAPS-Omnipod/AndroidAPS/wiki.
+# Android Studio autobuild
 
-2. Also, please keep in mind that AndroidAPS is open source software.
-
-3. Always keep in mind the (AAPS safety instructions) https://androidaps.readthedocs.io/en/latest/EN/Getting-Started/Safety-first.html.
-
-# AAPS autobuild
-
-Docker automatic builder for AndroidAPS-Omnipod (initial commit)
+Docker automatic builder for AndroidAPS
 
 With AAPS autobuild you can build .APK installer files on any system supporting Docker. No need to install Android Studio or SDK's. Docker is supported for multiple platforms:
 
