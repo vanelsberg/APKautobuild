@@ -1,7 +1,3 @@
-# **WARNING**: EXPERIMENTAL
-    
-    **Use at you own risk. Resulting .APK files are not fully tested!**
-
 # Android Studio APK autobuild
 
 Docker automatic builder for Android APK's
