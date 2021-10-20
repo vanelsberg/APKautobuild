@@ -5,4 +5,4 @@
 # Mounting local data on container
 data_mount=/data
 data_local=$(pwd)/data
-image=theod00r/apkbuilder:0.1.2
+image=theod00r/apkbuilder:1.0.0
