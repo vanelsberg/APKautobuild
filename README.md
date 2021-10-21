@@ -17,10 +17,10 @@ Note on Windows:
  
 # Preparations
 
-To build an Android APK using Docker you need:
+To build an Android APK using Docker you need to:
 
-    * WSL2 and/or Hyper-V enabled
-    * Install docker
+    * Have WSL2 and/or Hyper-V enabled
+    * Install docker (with WSL2 integration)
     * Setup your keystore at data/**keystore**
     * Edit the configuration file data/**source.environment**
 
