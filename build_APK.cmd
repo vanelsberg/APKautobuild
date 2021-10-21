@@ -14,4 +14,4 @@ rem Docker image (public access)
 set image=theod00r/apkbuilder:1.0.0
 
 rem Run container in interactive mode
-docker run -rm $docker_runparam --name AAPSbuilder --rm -v "%data_local%:%data_mount%" -it %image% %1
+docker run --rm $docker_runparam --name AAPSbuilder -v "%data_local%:%data_mount%" -it %image% %1
