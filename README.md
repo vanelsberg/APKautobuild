@@ -2,25 +2,17 @@
 
 Docker automatic builder for Android APK's
 
-With APKautobuild you can build .APK installer files on any system supporting Docker. No need to install Android Studio or SDK's. Docker is supported for multiple platforms:
+With APKautobuild you can build .APK installer files directly from Git code on any system supporting Docker. No need to install Android Studio or SDK's. Docker is supported for multiple platforms:
 
-    * Windows
+    * Windows and/or Windows WSL2
     * Linux
-    * Mac
-
-Note on Windows:
-
-    * WSL2: Windows Home or Pro
-    * Native: Requires Hyper-V enabled
-
-    For details see: https://docs.docker.com/desktop/windows/troubleshoot/#virtualization
+    * Mac (untested)
  
 # Preparations
 
 To build an Android APK using Docker you need to:
 
-    * Have WSL2 and/or Hyper-V enabled
-    * Install docker (with WSL2 integration)
+    * Install docker
     * Setup your keystore at data/**keystore**
     * Edit the configuration file data/**source.environment**
 
