@@ -9,3 +9,5 @@ source $(pwd)/config.build
 # Optionally run with "--maxmemory=4g"
 
 docker run $docker_runparam --rm --name AAPSbuilder -v $data_local:$data_mount -it $image $1
+
+# tee -i $data_local/build.log

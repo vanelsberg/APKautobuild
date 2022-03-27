@@ -1,8 +1,14 @@
 #!/bin/bash
 
+BUILDENV=autotune
 # docker_runparam="--memory=4g"
 
 # Mounting local data on container
+if [ -z ${BUILDENV} ]; then 
+  data_local=$(pwd)/data;
+else  
+  data_local=$(pwd)/data-${BUILDENV};
+fi;
+
 data_mount=/data
-data_local=$(pwd)/data
 image=theod00r/apkbuilder:1.0.0
