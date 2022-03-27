@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BUILDENV=autotune
+# BUILDENV=autotune
 # docker_runparam="--memory=4g"
 
 # Mounting local data on container
