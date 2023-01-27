@@ -6,7 +6,7 @@ With APKautobuild you can build .APK installer files directly from Git code on a
 
     * Windows and/or Windows WSL2
     * Linux
-    * Mac (untested)
+    * Mac (x64 only, untested)
 
     Internal memory available: at least 8GB
     Intel/x64
@@ -122,7 +122,7 @@ To build on Linux run the following commands:
 
 **You will find the build output in the location __data__/output**
 
-## Windows 10
+## Windows 10/11
 
 To build on Windows run the command batch file:
 
