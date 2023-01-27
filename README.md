@@ -8,7 +8,7 @@ With APKautobuild you can build .APK installer files directly from Git code on a
     * Linux
     * Mac (x64 only, untested)
 
-    Internal memory available: at least 8GB
+    Internal memory available: at least 16GB
     Intel/x64
  
 # Preparations
