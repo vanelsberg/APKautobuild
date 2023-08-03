@@ -1,31 +1,35 @@
-# Android Studio APK autobuild
+# Android Studio APK autobuild (Intel/AMD64)
 
-Docker automatic builder for Android APK's
+Docker automatic builder for Android APK's. *Note that the Android Studio SDK is only supports Intel/AMD64 platform!*
 
-With APKautobuild you can build .APK installer files directly from Git code on any system supporting Docker. No need to install Android Studio or SDK's. Docker is supported for multiple platforms:
+With APKautobuild you can build .APK installer files directly from Git code on any system supporting Docker. No need to install Android Studio or SDK's. 
+
+Docker is supported for multiple platforms (Intel/AMD64 only):
 
     * Windows and/or Windows WSL2
     * Linux
-    * Mac (x64 only, untested)
+    * Mac (untested)
 
     Internal memory available: at least 16GB
-    Intel/x64
  
 # Preparations
 
 To build an Android APK using Docker you need to:
 
-    * Install docker
+    * Install Docker
     * Setup your keystore at data/**keystore**
     * Edit the configuration file data/**source.environment**
 
-## Install WSL2/Ubuntu18.04 (Optional)
+## Install WSL2 (Ubuntu 18.04 or higher), Optional
 
-The Windows Subsystem for Linux lets developers run a GNU/Linux environment -- including most command-line tools, utilities, and applications -- directly on Windows, unmodified, without the overhead of a traditional virtual machine or dual-boot setup.
+The Windows Subsystem for Linux lets developers run a GNU/Linux environment.
 
-    https://docs.microsoft.com/en-us/windows/wsl/install-win10
+    -- including most command-line tools, utilities, and applications
+    -- directly on Windows, unmodified, without the overhead of a traditional virtual machine or dual-boot setup.
 
-## Install Docker Desktop for Windows/WSL
+    https://docs.microsoft.com/en-us/windows/wsl/install
+
+## Install Docker Desktop for Windows/WSL2
 
 Docker Desktop for Windows is the Community version of Docker for Microsoft Windows. You can download Docker Desktop for Windows from Docker Hub.
 
@@ -115,10 +119,10 @@ On initial run docker will need to download a docker image to the local docker i
 
 To build on Linux run the following commands:
 
-    chmod u+x build_AAPS.sh     # Make the script executable
+    chmod u+x build_APK.sh     # Make the script executable
 
-    ./build_AAPS.sh             # Run the script
-
+    ./build_APK.sh --clean     # Run the script to build from scratch
+    ./build_APK.sh             # Run the script to rebuild using previous build result
 
 **You will find the build output in the location __data__/output**
 
@@ -126,7 +130,7 @@ To build on Linux run the following commands:
 
 To build on Windows run the command batch file:
 
-    build_AAPS.cmd
+    build_APK.cmd
 
 * **Important**:
 
