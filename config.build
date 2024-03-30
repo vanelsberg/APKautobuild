@@ -6,6 +6,10 @@
 
 # Mounting local data on container
 data_mount=/data
+
+# Build location under data_mount
+publishdir=builds
+
 # Local data
 if [ -z ${BUILDENV} ]; then 
   data_local=$(pwd)/data;
