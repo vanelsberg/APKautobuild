@@ -6,17 +6,21 @@ With APKautobuild you can build .APK installer files directly from Git code on a
 
 Docker is supported for multiple platforms (Intel/AMD64 only):
 
-    * Windows and/or Windows WSL2
-    * Linux
-    * Mac (untested)
+    * Windows 10/11 (Command or WSL2)
+    * Apple Mac Pro
+    * Ubuntu/Linux (intel)
 
-    Internal memory available: at least 16GB
+System requirements:
+
+    Memory available: 12GB or more
+    Docker memory available: at least 8GB
+    Internet connection is required for pulling remote Docker image
  
 # Preparations
 
-To build an Android APK using Docker you need to:
+To build an Android APK using Docker you need to (see configuration):
 
-    * Install Docker
+    * Install Docker Desktop
     * Setup your keystore at data/**keystore**
     * Edit the configuration file data/**source.environment**
 
@@ -29,13 +33,22 @@ The Windows Subsystem for Linux lets developers run a GNU/Linux environment.
 
     https://docs.microsoft.com/en-us/windows/wsl/install
 
-## Install Docker Desktop for Windows/WSL2
+## Install Docker Desktop for Windows/WSL2 or Apple Mac Pro
 
 Docker Desktop for Windows is the Community version of Docker for Microsoft Windows. You can download Docker Desktop for Windows from Docker Hub.
 
     https://docs.docker.com/docker-for-windows/install/
     or
     https://www.docker.com/products/docker-desktop
+
+## Get the code
+Open a terminal session on your Windows (command prompt), Windows/WSL2 or Mac Pro.
+Next, create a base directory and clone the code form Github:
+
+	mkdir /android
+	cd /android
+	git clone https://github.com/vanelsberg/APKautobuild.git .
+	cd APKautobuild
 
 ## Configuration
 To build from Linux you need to:
@@ -135,10 +148,12 @@ To build on Windows run the command batch file:
 * **Important**:
 
     When editing the _aapsbuilder.config configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
-    You can check by openeing the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
+    You can check by opening the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
 
-**You will find the build output in the location __data__/output**
+**You will find the build output in the location __data__/builds**
 
-## MacOS
+## Additional notes:
+On first run Docker needs to download the APKbuilder image from the Docker repository. Depending on the speed of your internet connection
+this may take some time. Subsequent builds however will reused the image downloaded locally.
 
-TODO: Untested!?
+An active internet connection is required while building the APK for getting the latest code and libraries to build the APK's
