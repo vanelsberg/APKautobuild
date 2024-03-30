@@ -3,6 +3,7 @@ data*/keystore/appkeyAndroidAPS-keystore.jks
 data*/output/*.apk
 data*/output/*.json
 data*/onedrive
+data*/builds
 data*/keystore.zip
 
 data-autotune*
