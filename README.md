@@ -16,15 +16,22 @@ System requirements:
     Docker memory available: at least 8GB
     Internet connection is required for pulling remote Docker image
  
-# Preparations
+# Preparations and use
 
 To build an Android APK using Docker you need to (see configuration):
 
     * Install Docker Desktop
+    * Clone this project
     * Setup your keystore at data/**keystore**
-    * Edit the configuration file data/**source.environment**
+    * Edit the configuration file data/**asbuilder.config**
+    * Build the .APK by running ./build_APK.sh (Windows: build_APK.cmd)
 
-## Install WSL2 (Ubuntu 18.04 or higher), Optional
+Optionally you can define muliple build configurations using multiple "data" locations:
+The data directory is defined in the config.build file through the BUILDENV parameter (default is "./data")
+
+# Decumentation
+
+## Install WSL2 (Ubuntu 20.04 or higher), Optional
 
 The Windows Subsystem for Linux lets developers run a GNU/Linux environment.
 
@@ -51,7 +58,7 @@ Next, create a base directory and clone the code form Github:
 	cd APKautobuild
 
 ## Configuration
-To build from Linux you need to:
+To build the .APK file you need to:
 
     * Setup your keystore at data/**keystore**
     * Edit the configuration file data/**asbuilder.config**
@@ -100,16 +107,17 @@ Configuration is in the file _aapsbuilder.config_:
 
 ## Configuration:
 
-* data/**source.environment**
+* data/**asbuilder.config**
 
     This file contains the following configuration items. You may need to update them for your specific build.
 
     * Git config variables:
 
-            GIT_PROJECT
-            GIT_REPO
-            GIT_BRANCH
-            GIT_COMMIT
+            GIT_PROJECT         Projectname
+            GIT_REPO            Git repo clone url
+            GIT_BRANCH          Git branch to build (e.g: "dev","master" - empty="master")
+            GIT_COMMIT          Git commit hash to build (empty=latest commit)
+            GIT_MERGE_PRNUM     Git PR number to merge with current branch/commit (e.g: "3347,3357,3362" or empty)
 
     * Signing keyfile, alias and password files:
 
@@ -135,6 +143,7 @@ To build on Linux run the following commands:
     chmod u+x build_APK.sh     # Make the script executable
 
     ./build_APK.sh --clean     # Run the script to build from scratch
+    ./build_APK.sh --rebuild   # Run the script to build with new/updated code from Git
     ./build_APK.sh             # Run the script to rebuild using previous build result
 
 **You will find the build output in the location __data__/output**
@@ -145,7 +154,7 @@ To build on Windows run the command batch file:
 
     build_APK.cmd
 
-* **Important**:
+    * **Important**:
 
     When editing the _aapsbuilder.config configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
     You can check by opening the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
@@ -157,3 +166,10 @@ On first run Docker needs to download the APKbuilder image from the Docker repos
 this may take some time. Subsequent builds however will reused the image downloaded locally.
 
 An active internet connection is required while building the APK for getting the latest code and libraries to build the APK's
+
+# Changes
+
+20240521
+    * Updated this README
+    * Updated to docker images theod00r/apkbuilder:1.1.10
+    * Added asconfig parameter 'GIT_MERGE_PRNUM' for optionally PR merging 
