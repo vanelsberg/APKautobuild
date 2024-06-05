@@ -3,6 +3,7 @@
 # Set build environment
 # BUILDENV=autotune
 # BUILDENV=LH
+# BUILDENV=IvB
 
 # Mounting local data on container
 data_mount=/data
@@ -17,4 +18,4 @@ else
   data_local=$(pwd)/data-${BUILDENV};
 fi;
 
-image=theod00r/apkbuilder:1.1.9
+image=theod00r/apkbuilder:1.1.11
