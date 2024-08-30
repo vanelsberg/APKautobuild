@@ -155,12 +155,12 @@ To build on Windows run the command batch file:
 
     build_APK.cmd
 
-    ***Important**:
+***Important**:
 
-    When editing the _aapsbuilder.config configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
-    You can check by opening the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
+When editing the _aapsbuilder.config configuration file make sure not to change the file line ending from Unix 'LF' to Windows 'CR/LF'.
+You can check by opening the file with Windows notepad.exe (enable the status bar from view) at look at the bottum-right of the window: it should say "Unix (LF), UTF-8"
 
-    Note that building directly from Windows (not WSL) only has basic build functionality. Building from WSL/Linux is preferred.
+Note that building directly from Windows (not WSL) only has basic build functionality. Building from WSL/Linux is preferred.
 
 **You will find the build output in the location __data__/builds**
 
