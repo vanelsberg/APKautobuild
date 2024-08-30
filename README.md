@@ -127,7 +127,7 @@ Configuration is in the file _aapsbuilder.config_:
 
 * Other configuration:
 
-    * The script file _dbrun.sh_ defines a variable named **data_local**.
+    * The script file _build APK.sh_ defines a variable named **data_local**.
     It defaults to the directory **data** in the root directory of this project but you may change this to any directory location on your local machine.
 
 ## Building Android .APK files
