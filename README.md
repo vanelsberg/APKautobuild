@@ -127,8 +127,9 @@ Configuration is in the file _aapsbuilder.config_:
 
 * Other configuration:
 
-    * The script file _build_APK.sh_ defines a variable named **data_local**.
-    It defaults to the directory **data** in the root directory of this project but you may change this to any directory location on your local machine.
+    * The script file _build_APK.sh_ defines a variable named **data_local** using confiuration as defined in the file _config.build_
+    It defaults to the directory **data** in the root directory of this project but you may change this to any (sub)directory location
+    on your local machine. For details see config.build.
 
 ## Building Android .APK files
 
@@ -138,7 +139,7 @@ On initial run docker will need to download a docker image to the local docker i
 
 ## Linux/WSL
 
-To build on Linux run the following commands:
+To build on Linux (using defaults from _config.build_) run the following commands:
 
     chmod u+x build_APK.sh     # Make the script executable
 
