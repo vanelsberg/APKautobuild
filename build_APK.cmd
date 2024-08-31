@@ -12,7 +12,7 @@ rem set docker_runparam="--memory=4g"
 set docker_runparam=
 
 rem Docker image (public access)
-set image=theod00r/apkbuilder:1.1.4
+set image=theod00r/apkbuilder:1.1.12
 
 rem Run container in interactive mode
 rem docker run --rm %docker_runparam% --name AAPSbuilder -v "%data_local%:%data_mount%" -it %image% %1
