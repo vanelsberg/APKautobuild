@@ -5,10 +5,11 @@
 # BUILDENV=LH
 # BUILDENV=IvB
 
-# Mounting local data on container
+# Mounting local data on container (do not change!)
 data_mount=/data
 
-# Build location under data_mount
+# Build publishing location under data_mount used by publish.sh script.
+# Hint: change this to a linked directory pointing to an alternate storage location like OneDrive.
 publishdir=builds
 
 # Local data
