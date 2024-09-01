@@ -19,4 +19,4 @@ else
   data_local=$(pwd)/data-${BUILDENV};
 fi;
 
-image=theod00r/apkbuilder:1.1.12
+image=theod00r/apkbuilder:1.2.0
