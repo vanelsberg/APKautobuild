@@ -16,23 +16,35 @@ System requirements:
     Docker memory available: at least 8GB
     Internet connection is required for pulling remote Docker image
  
-# Preparations and use
+# Quickstart (Preparations and use)
 
 To build an Android APK using Docker you need to (see configuration):
 
     * Install Docker Desktop
     * Clone this project
-    * Setup your keystore at data/**keystore**
-    * Edit the configuration file data/**asbuilder.config**
-    * Build the .APK by running ./build_APK.sh (Windows: build_APK.cmd)
+    * Setup your keystore at ./data/**keystore**
+    * Edit the configuration file ./data/**asbuilder.config** (or use the defaults)
+    * Build the .APK by running **./build_APK.sh** (Windows: build_APK.cmd)
+    * Publish the build output by running **./publish.sh** (Windows: build_APK.cmd)
 
-Optionally you can define muliple build configurations using multiple "data" locations:
-The data directory is defined in the config.build file through the BUILDENV parameter (default is "./data")
+Optionally you can use alternate build configurations using multiple "data" directory locations:
 
-# Decumentation
+By default the directory **"./data"** is used.
+Optionally you can changed this to **"./data-'BUILDENV'"** by defining the **BUILDENV** setting in the config.build file.
 
-## Install WSL2 (Ubuntu 20.04 or higher), Optional
+## Note for building using the Windows command prompt (buuild_APK.cmd)
 
+Functionality will be limited:
+
+    * AAPS Fullrelease only
+    * Configuration through ./data only (not configurable through BUILDENV)
+    * Using **cleanbuild.cmd** to start a clean build
+
+# Documentation
+
+## For Windows, install WSL2 (Ubuntu 20.04 or higher)
+
+Even thou you can build from teh Windows command prompt WSL is the the prefered build environment. 
 The Windows Subsystem for Linux lets developers run a GNU/Linux environment.
 
     -- including most command-line tools, utilities, and applications
@@ -61,7 +73,7 @@ Next, create a base directory and clone the code form Github:
 To build the .APK file you need to:
 
     * Setup your keystore at data/**keystore**
-    * Edit the configuration file data/**asbuilder.config**
+    * Edit the configuration file data/**asbuilder.config** (optional, or use defaults)
 
 ## Data directory:
 On startup the docker countainer mounts a data directory for storing configuration data and build results:
@@ -125,6 +137,9 @@ Configuration is in the file _aapsbuilder.config_:
             KEY_ALIAS
             KEY_PASSW_FILE
 
+    * Build variant:
+            BUILD_VARIANT="FullRelease" or "aapsclientRelease" or "pumpcontrolRelease"
+
 * Other configuration:
 
     * The script file _build_APK.sh_ defines a variable named **data_local** using confiuration as defined in the file _config.build_
@@ -146,8 +161,10 @@ To build on Linux (using defaults from _config.build_) run the following command
     ./build_APK.sh --clean     # Run the script to build from scratch
     ./build_APK.sh --rebuild   # Run the script to build with new/updated code from Git
     ./build_APK.sh             # Run the script to rebuild using previous build result
+    ./publish.sh               # Copy the output .apk to the 'builds' location
 
 **You will find the build output in the location __data__/output**
+**You will find the published output in the location __data__/builds**
 
 ## Windows 10/11
 
@@ -174,5 +191,10 @@ An active internet connection is required while building the APK for getting the
 
 20240521
     * Updated this README
-    * Updated to docker images theod00r/apkbuilder:1.1.10
-    * Added asconfig parameter 'GIT_MERGE_PRNUM' for optionally PR merging 
+    * Updated the Docker builder image version
+    * Added asbuilder.config support for optional PR merging
+
+20250901
+    * Updated the Docker builder image version
+    * Fixed Git log needing user interaction on paging
+    * Added asbuilder.config support for option build variants
