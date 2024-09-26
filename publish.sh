@@ -6,7 +6,7 @@ source $data_local/asbuilder.config
 
 if [ "$(ls -A $data_local/output)" ];
 then
-  dstdir=$data_local/$publishdir/${BUILDENV}$(date '+%Y%m%d_%H%M')
+  dstdir=$data_local/$publishdir/${BUILDENV}/$(date '+%Y%m%d_%H%M')
   echo $dstdir
 
   if [[ ! -z "${GIT_MERGE_PRNUM}" ]];
