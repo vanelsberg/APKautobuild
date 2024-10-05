@@ -4,7 +4,7 @@
 source $(pwd)/config.build
 source $data_local/asbuilder.config
 
-if [ "$(ls -A $data_local/output)" ];
+if [ "$(ls -A  --ignore=.dir $data_local/output/)" ];
 then
   dstdir=$data_local/$publishdir/${BUILDENV}/$(date '+%Y%m%d_%H%M')
   echo $dstdir
