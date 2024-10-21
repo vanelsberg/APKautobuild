@@ -22,7 +22,7 @@ then
 
   if [[ ! -z "${GIT_COMMIT}" ]];
   then
-    dstdir=${dstdir}#${GIT_COMMIT}
+    dstdir=${dstdir}#${GIT_COMMIT:0:8}
   fi
 
   # Hint: create a symbolic link to a onedrive directory:
