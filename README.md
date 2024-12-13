@@ -16,7 +16,44 @@ System requirements:
     Docker memory available: at least 8GB
     Internet connection is required for pulling remote Docker image
  
-# Quickstart (Preparations and use)
+# Basic Quickstart for Windows 10/11
+
+    1) Install ["Docker Desktop for Windows - x86_64"](https://docs.docker.com/desktop/setup/install/windows-install/) and Git
+
+    2) Open the Windows command prompt
+
+    3) Type:
+       C: <enter>
+       cd /
+       mkdir android
+       cd android
+       git clone git@github.com:vanelsberg/APKautobuild.git
+       cd APKautobuild
+
+    4) Type:
+       cd \android\APKautobuilder\data\keystore
+
+        - Copy your keystore file (extension .jks) to this location
+        - Create a plaintext password file named _ks-password_ containing 2 lines (see ks-password.sample):
+          * line1: keystore password
+          * line2: key password
+
+    5) Type:
+       cd \android\APKautobuilder
+       notepad data\asbuilder.config
+       - Check/edit the KEY_FILE (keystore file) and KEY_ALIAS (alias) names
+
+       Note on GRADLE_OPTS:
+       Set the number of workers to '1' (-Dorg.gradle.workers.max=1)
+       Once this is working you can try setting up to 8 workers to improve build performance:
+
+    6) Now try building the .APK's by typing:
+       cd \android\APKautobuilder
+       win_build_APK.cmd<enter>
+
+       On a succesfull build you will find the .apk's at the location APKbuilder\data\output
+
+# Quickstart Docker/WSL2 (Preparations and use)
 
 To build an Android APK using Docker you need to (see configuration):
 
