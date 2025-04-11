@@ -16,7 +16,7 @@ System requirements:
     Docker memory available: at least 8GB
     Internet connection is required for pulling remote Docker image
  
-# Basic Quickstart for Windows 10/11
+# Quickstart for Windows 10/11
 
     1) Install ["Docker Desktop for Windows - x86_64"](https://docs.docker.com/desktop/setup/install/windows-install/) and Git
 
@@ -27,7 +27,7 @@ System requirements:
        cd /
        mkdir android
        cd android
-       git clone git@github.com:vanelsberg/APKautobuild.git
+       git clone https://github.com/vanelsberg/APKautobuild.git
        cd APKautobuild
 
     4) Type:
@@ -53,16 +53,20 @@ System requirements:
 
        On a succesfull build you will find the .apk's at the location APKbuilder\data\output
 
-# Quickstart Docker/WSL2 (Preparations and use)
+# Quickstart Docker/WSL2
 
 To build an Android APK using Docker you need to (see configuration):
 
-    * Install Docker Desktop
-    * Clone this project
-    * Setup your keystore at ./data/**keystore**
-    * Edit the configuration file ./data/**asbuilder.config** (or use the defaults)
-    * Build the .APK by running **./build_APK.sh** (Windows: build_APK.cmd)
-    * Publish the build output by running **./publish.sh** (Windows: build_APK.cmd)
+    1) Install Docker Desktop
+    2) Clone this project:
+        mkdir /android
+        cd android
+        git clone https://github.com/vanelsberg/APKautobuild.git
+        cd APKautobuild
+    3) Setup your keystore at ./data/**keystore**
+    4) Edit the configuration file ./data/**asbuilder.config** (or use the defaults)
+    5) Build the .APK by running **./build_APK.sh --clean** (Windows: win_build_APK.cmd)
+    6) Publish the build output by running **./publish.sh** (Windows: win_build_APK.cmd)
 
 Optionally you can use alternate build configurations using multiple "data" directory locations:
 
@@ -225,6 +229,13 @@ this may take some time. Subsequent builds however will reused the image downloa
 An active internet connection is required while building the APK for getting the latest code and libraries to build the APK's
 
 # Changes
+
+20250410
+    * Updated this README
+    * Moved to Android SDK Platform and tools 35.0.2
+    * Improved image size
+    * Windows: allways do a clean build
+    * Windows: add script for generating .jks keyfile
 
 20240521
     * Updated this README
