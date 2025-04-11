@@ -12,13 +12,14 @@ rem set docker_runparam="--memory=4g"
 set docker_runparam=
 
 rem Docker image (public access)
-set image=theod00r/apkbuilder:1.3.0
+set image=theod00r/apkbuilder:1.3.5
 
 rem Run container in interactive mode
 rem docker run --rm %docker_runparam% --name AAPSbuilder -v "%data_local%:%data_mount%" -it %image% %1
 
-rem docker volume rm volAAPSgit
-rem docker volume rm volAAPSgradle
+rem Run a clean build
+docker volume rm volAAPSgit
+docker volume rm volAAPSgradle
 
 set mount_volAAPSgradle=-v volAAPSgradle:/root/.gradle
 set mount_volAAPSgit=-v volAAPSgit:/user/src/asbuilder/AndroidAPS
