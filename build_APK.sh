@@ -36,7 +36,7 @@ case "$1" in
 esac
 
 # Run container in interactive mode
-cmd="docker run $docker_runparam --rm --name AAPSbuilder \
+cmd="docker run $docker_runparams --rm --name AAPSbuilder \
 --mount source=volAAPSgradle,target=/root/.gradle \
 --mount source=volAAPSgit,target=/user/src/asbuilder/AndroidAPS \
 --mount type=bind,source=$data_local,target=$data_mount \
