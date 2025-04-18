@@ -14,7 +14,7 @@ System requirements:
 
     Memory available: 12GB or more
     Docker memory available: at least 8GB
-    Internet connection is required for pulling remote Docker image
+    Internet connection is required while building and for pulling remote Docker image
  
 # Quickstart for Windows 10/11
 
@@ -171,6 +171,7 @@ Configuration is in the file _aapsbuilder.config_:
             GIT_BRANCH          Git branch to build (e.g: "dev","master" - empty="master")
             GIT_COMMIT          Git commit hash to build (empty=latest commit)
             GIT_MERGE_PRNUM     Git PR number to merge with current branch/commit (e.g: "3347,3357,3362" or empty)
+            GIT_PATCHES         Git patchfiles to merge form data/patches with current branch/commit (e.g: "mychanges.patch" or empty)
 
     * Signing keyfile, alias and password files:
 
@@ -186,6 +187,29 @@ Configuration is in the file _aapsbuilder.config_:
     * The script file _build_APK.sh_ defines a variable named **data_local** using confiuration as defined in the file _config.build_
     It defaults to the directory **data** in the root directory of this project but you may change this to any (sub)directory location
     on your local machine. For details see config.build.
+
+* Memory requirement
+
+    On start autobuilder checks ig the build container has sufficient free memory avaiulable for a succesfull build. Not that Docker Desktop (WSL) by default limits the maximum amount of memory a container can claim to 50% of the total amount available in the system. So if your laptop has 16G memory, the maximum amount of memory a Docker container can clain is 8G.
+
+    In case momeroy is insufficient for performing a build there are 2 options:
+    1. Change the memory limts for your system:
+    
+        - _Windows_:
+        Edit the .wslconfig file. Set the option memory to "10G" or higher. Higher values may improve build performance.
+
+                [wsl2]
+                memory=10GB
+
+        - _Mac Pro_:
+        In Docker Desktp, increase the memory slider under
+        
+                Settings -> Resources -> Advance
+
+    2. Disable the memory check by uncommenting the skip_memorycheck= setting in the data/asbuilder.config file and see how you go (_YMMV - not recommended!)_
+
+            skip_memorycheck=true
+
 
 ## Building Android .APK files
 
@@ -228,12 +252,38 @@ this may take some time. Subsequent builds however will reused the image downloa
 
 An active internet connection is required while building the APK for getting the latest code and libraries to build the APK's
 
-# Changes
+# PR's
+You can automatically merge on or more PR's.
+
+Add/edit the folling lines in data/asbuilder.config. PR numbers should be separated by comma characters.
+
+    ## PR te merge
+    export GIT_MERGE_PRNUM="3879,3939"
+
+# PATCHES
+You can automatically apply one or morge git patches.
+
+Add/edit the folling lines in data/asbuilder.config. You can create patchfiles using "git diff > mypatcgh.patch".
+
+Place the patchfiles in the data/patches direcory. Then add the patch file name or names separated by comma characters.
+
+    ## Patches in the data/patches directory
+    export GIT_PATCHES=mypatch.patch, /V3-dev/otherpatch.patch
+
+# CHANGES
+
+20250418
+    * Image version 1.3.8
+    * Updated this README
+    * Added option to apply git patches
+    * Fixed memory check (see also 'Memory requirement' section)
 
 20250410
+    * Image version 1.3.6
     * Updated this README
-    * Moved to Android SDK Platform and tools 35.0.2
     * Improved image size
+    * Moved to Android SDK Platform and tools 35.0.2
+    * Check memory requirements
     * Windows: allways do a clean build
     * Windows: add script for generating .jks keyfile
 
