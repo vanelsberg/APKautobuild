@@ -4,10 +4,6 @@ data*/output/*.apk
 data*/output/*.json
 data*/onedrive
 data*/builds
+data*/patches
 data*/keystore.zip
 
-data-old.zip
-data-autotune*
-data-LH*
-data-IvB*
-data-TVEDEV*
